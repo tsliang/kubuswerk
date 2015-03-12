@@ -1,0 +1,11 @@
+c:\users\peter.lazzarino\documents\visual studio 2012\Projects\BuildMonitor\BuildMonitor\bin\Debug\BuildMonitor.exe.config
+c:\users\peter.lazzarino\documents\visual studio 2012\Projects\BuildMonitor\BuildMonitor\bin\Debug\BuildMonitor.exe
+c:\users\peter.lazzarino\documents\visual studio 2012\Projects\BuildMonitor\BuildMonitor\bin\Debug\BuildMonitor.pdb
+c:\users\peter.lazzarino\documents\visual studio 2012\Projects\BuildMonitor\BuildMonitor\bin\Debug\EasyHttp.dll
+c:\users\peter.lazzarino\documents\visual studio 2012\Projects\BuildMonitor\BuildMonitor\bin\Debug\JsonFx.dll
+c:\users\peter.lazzarino\documents\visual studio 2012\Projects\BuildMonitor\BuildMonitor\bin\Debug\TeamCitySharp.dll
+c:\users\peter.lazzarino\documents\visual studio 2012\Projects\BuildMonitor\BuildMonitor\bin\Debug\JsonFx.xml
+c:\users\peter.lazzarino\documents\visual studio 2012\Projects\BuildMonitor\BuildMonitor\obj\Debug\BuildMonitor.csprojResolveAssemblyReference.cache
+c:\users\peter.lazzarino\documents\visual studio 2012\Projects\BuildMonitor\BuildMonitor\obj\Debug\BuildMonitor.exe
+c:\users\peter.lazzarino\documents\visual studio 2012\Projects\BuildMonitor\BuildMonitor\obj\Debug\BuildMonitor.pdb
+c:\users\peter.lazzarino\documents\visual studio 2012\Projects\BuildMonitor\BuildMonitor\bin\Debug\EasyHttp.pdb
