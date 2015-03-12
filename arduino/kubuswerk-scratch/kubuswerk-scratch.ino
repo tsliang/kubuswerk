@@ -1,10 +1,11 @@
 
-int RED_PIN = 5;
-int GRN_PIN = 6;
-int RED_ON = 100;
-int GRN_ON = 75;
+int GRN_PIN = 5;
+int RED_PIN = 6;
+int RED_ON = 10;
+int GRN_ON = 10;
 
 int mode = 0;
+
 void setup() {
   pinMode(RED_PIN, OUTPUT);
   pinMode(GRN_PIN, OUTPUT);
