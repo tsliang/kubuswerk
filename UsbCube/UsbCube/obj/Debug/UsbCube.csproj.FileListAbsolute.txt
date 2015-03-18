@@ -1,0 +1,14 @@
+C:\Users\Jordan.Homan\documents\visual studio 2012\Projects\UsbCube\UsbCube\bin\Debug\UsbCube.exe.config
+C:\Users\Jordan.Homan\documents\visual studio 2012\Projects\UsbCube\UsbCube\obj\Debug\UsbCube.exe
+C:\Users\Jordan.Homan\documents\visual studio 2012\Projects\UsbCube\UsbCube\obj\Debug\UsbCube.pdb
+C:\Users\Jordan.Homan\documents\visual studio 2012\Projects\UsbCube\UsbCube\bin\Debug\UsbCube.exe
+C:\Users\Jordan.Homan\documents\visual studio 2012\Projects\UsbCube\UsbCube\bin\Debug\UsbCube.pdb
+C:\Users\Jordan.Homan\documents\visual studio 2012\Projects\UsbCube\UsbCube\bin\Debug\LibUsbDotNet.dll
+C:\Users\Jordan.Homan\documents\visual studio 2012\Projects\UsbCube\UsbCube\obj\Debug\UsbCube.csprojResolveAssemblyReference.cache
+C:\W\kubuswerk\UsbCube\UsbCube\bin\Debug\UsbCube.exe.config
+C:\W\kubuswerk\UsbCube\UsbCube\obj\Debug\UsbCube.exe
+C:\W\kubuswerk\UsbCube\UsbCube\obj\Debug\UsbCube.pdb
+C:\W\kubuswerk\UsbCube\UsbCube\bin\Debug\UsbCube.exe
+C:\W\kubuswerk\UsbCube\UsbCube\bin\Debug\UsbCube.pdb
+C:\W\kubuswerk\UsbCube\UsbCube\bin\Debug\LibUsbDotNet.dll
+C:\W\kubuswerk\UsbCube\UsbCube\obj\Debug\UsbCube.csprojResolveAssemblyReference.cache
