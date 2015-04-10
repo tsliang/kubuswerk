@@ -1,5 +1,0 @@
-C:\Dev\kubuswerk\UsbCube\UsbCube\bin\Debug\UsbCube.exe.config
-C:\Dev\kubuswerk\UsbCube\UsbCube\bin\Debug\UsbCube.exe
-C:\Dev\kubuswerk\UsbCube\UsbCube\bin\Debug\UsbCube.pdb
-C:\Dev\kubuswerk\UsbCube\UsbCube\obj\Debug\UsbCube.exe
-C:\Dev\kubuswerk\UsbCube\UsbCube\obj\Debug\UsbCube.pdb
