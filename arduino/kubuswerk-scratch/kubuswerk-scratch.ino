@@ -1,8 +1,8 @@
 
 int GRN_PIN = 5;
 int RED_PIN = 6;
-int RED_ON = 10;
-int GRN_ON = 10;
+int RED_ON = 150;
+int GRN_ON = 200;
 
 int mode = 0;
 

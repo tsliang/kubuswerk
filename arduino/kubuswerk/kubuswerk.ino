@@ -1,18 +1,20 @@
 
 // Constant definitions
-int RED_PIN    = 5;
-int GRN_PIN    = 6;
-int RED_ON     = 10;
-int GRN_ON     = 10;
-int MODE_OFF   = 0;
-int MODE_ON    = 1;
-int MODE_BLINK = 2;
-int MODE_PULSE = 3;
+const int RED_PIN    = 5;
+const int GRN_PIN    = 6;
+const int RED_ON     = 150;
+const int GRN_ON     = 200;
+const int MODE_OFF   = 0;
+const int MODE_ON    = 1;
+const int MODE_BLINK = 2;
+const int MODE_PULSE = 3;
 
-int greenMode  = 0;
-int redMode    = 0;
-int greenReps  = 0;
-int redReps    = 0;
+int grnMode  = 0;
+int redMode  = 0;
+int grnReps  = 0;
+int redReps  = 0;
+int redState = 0;
+int grnState = 0;
 
 void setup() {
   pinMode(RED_PIN, OUTPUT);
@@ -32,10 +34,11 @@ void loop() {
     runPulse();
     delay(10);
   }
+  checkReps();
 }
 
 void runOn() {
-  if (greenMode == MODE_ON) {
+  if (grnMode == MODE_ON) {
     analogWrite(GRN_PIN, GRN_ON);
   }
   if (redMode == MODE_ON) {
@@ -44,7 +47,7 @@ void runOn() {
 }
 
 void runOff() {
-  if (greenMode == MODE_OFF) {
+  if (grnMode == MODE_OFF) {
     analogWrite(GRN_PIN, 0);
   }
   if (redMode == MODE_OFF) {
@@ -56,7 +59,7 @@ int redBlinkState = 0;
 int grnBlinkState = 0;
 
 void runBlink() {
-  if (greenMode == MODE_BLINK) {
+  if (grnMode == MODE_BLINK) {
     if (grnBlinkState++ < 50) {
       analogWrite(GRN_PIN, GRN_ON);
     } else {
@@ -76,38 +79,64 @@ void runBlink() {
 
 int redPulseState = 0;
 int grnPulseState = 0;
+int pulseStep = 0;
 void runPulse() {
-  if (redPulseState < 50) {
-    redPulseState++;
-  } else {
-    redPulseState--;
+  if (redMode == MODE_PULSE) {
+    _runPulse(&redPulseState, RED_PIN, RED_ON);
   }
-  if (grnPulseState < 50) {
-    grnPulseState++;
+  if (grnMode == MODE_PULSE) {
+    _runPulse(&grnPulseState, GRN_PIN, GRN_ON);
+  }  
+  pulseStep = ++pulseStep % 100;
+}
+
+void _runPulse(int* pulseStateVar, int pin, int maxPower) {
+  int pulseState = *pulseStateVar;
+  if (pulseStep < 50) {
+    pulseState++;
   } else {
-    grnPulseState--;
+    pulseState--;
   }
-  int redPower = map(redPulseState, 0, 100, 0, RED_ON);
-  int grnPower = map(grnPulseState, 0, 100, 0, GRN_ON);
-  analogWrite(RED_PIN, redPower);
-  analogWrite(GRN_PIN, grnPower);
+  int power = map(pulseState, 0, 100, 0, maxPower);
+  analogWrite(pin, power);
+  *pulseStateVar = pulseState;
 }
 
 int OP_RED   = 0b10000000;
 int OP_GRN   = 0b01000000;
 int OP_MODE  = 0b00110000;
-// EXAMPLE     0b11100011;
 int OP_REPS  = 0b00001111;
-
 void parseOpCode(int opCode) {
   int mode = (opCode & OP_MODE) >> 4;
   int reps = (opCode & OP_REPS);
   if (opCode & OP_RED) {
     redMode = mode;
     redReps = reps;
+    if (reps == 0) {
+      redState = mode;
+    }
   }
   if (opCode & OP_GRN) {
-    greenMode = mode;
-    greenReps = reps;
+    grnMode = mode;
+    grnReps = reps;
+    if (reps == 0) {
+      grnState = mode;
+    }
+  }
+}
+
+void checkReps() {
+  _checkReps(&grnReps, &grnMode, &grnState);
+  _checkReps(&redReps, &redMode, &redState);
+}
+
+void _checkReps(int* repVar, int* modeVar, int* stateVar) {
+  int reps = *repVar;
+  if (reps != 0) {
+    reps--;
+    if (reps == 0) {
+      *modeVar = *stateVar;
+    }
+    *repVar = reps;
   }
 }
