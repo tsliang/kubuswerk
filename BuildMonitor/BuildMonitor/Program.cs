@@ -16,10 +16,12 @@ namespace BuildMonitor{
         private static Thread _musicThread;
 
         private static void Main(string[] args){
-            var teamCityCube = new TeamCityCube();
+
+            var teamCityCube = new TeamCityAgent();
             _musicThread = new Thread(PlaySong);
-            var teamCityCubeDriver = new TeamCityCubeDriver();
-            teamCityCube.Connect();
+            var teamCityCubeDriver = new TeamCityCubeDriver("COM5");
+            teamCityCubeDriver.SendCommand(CubeConfiguration.AllOff, false);
+            teamCityCube.ConnectToTeamCity();
             var builds = teamCityCube.GetBuildConfigurations();
             while (true)
             {
@@ -28,14 +30,14 @@ namespace BuildMonitor{
             }
         }
 
-        private static void RunProgram(TeamCityCube teamCityCube, BuildConfig chosenBuild, TeamCityCubeDriver teamCityCubeDriver)
+        private static void RunProgram(TeamCityAgent teamCityAgent, BuildConfig chosenBuild, TeamCityCubeDriver teamCityCubeDriver)
         {
             do
             {
                 while (!Console.KeyAvailable)
                 {
-                    var status = teamCityCube.GetStatus(chosenBuild);
-                    teamCityCubeDriver.SendUpdate(status);
+                    var status = teamCityAgent.GetStatus(chosenBuild);
+                    teamCityCubeDriver.SendCommand(status.ToCubeConfiguration(), true);
                     ShowBuildStatus(status);
                     Thread.Sleep(1000);
                 }
@@ -73,22 +75,23 @@ namespace BuildMonitor{
         }        
 
         private static void ShowBuildStatus(BuildStatus status){
+
             Console.BackgroundColor = status.Result == BuildResult.Success ? ConsoleColor.DarkGreen : ConsoleColor.DarkRed;
             Console.ForegroundColor = status.IsBuilding ? ConsoleColor.White : ConsoleColor.Black;
-            if (status.Result == BuildResult.Failure)
-            {
-                if (!_musicThread.IsAlive)
-                {
-                    _musicThread.Start();
-                }
-            }
-            else
-            {
-                if (_musicThread.IsAlive)
-                {
-                    _musicThread.Abort();
-                }
-            }
+            //if (status.Result == BuildResult.Failure)
+            //{
+            //    if (!_musicThread.IsAlive)
+            //    {
+            //        _musicThread.Start();
+            //    }
+            //}
+            //else
+            //{
+            //    if (_musicThread.IsAlive)
+            //    {
+            //        _musicThread.Abort();
+            //    }
+            //}
             Console.WriteLine(status.IsBuilding ? "Building" : "Done");
         }
 

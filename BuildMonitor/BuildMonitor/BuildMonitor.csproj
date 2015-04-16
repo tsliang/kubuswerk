@@ -52,14 +52,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\TeamCityCubeDriver.cs" />
     <Compile Include="Models\BuildResult.cs" />
     <Compile Include="Models\BuildStatus.cs" />
+    <Compile Include="Models\CubeConfiguration.cs" />
     <Compile Include="Models\LatestBuild.cs" />
     <Compile Include="Models\BlinkType.cs" />
-    <Compile Include="Models\TeamCityCubeDriver.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TeamCityCube.cs" />
+    <Compile Include="TeamCityAgent.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

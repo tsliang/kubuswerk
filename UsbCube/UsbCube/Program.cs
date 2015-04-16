@@ -13,7 +13,7 @@ namespace Examples{
                 com5.Encoding = Encoding.ASCII;
                 com5.NewLine = new string(new []{Convert.ToChar(13), Convert.ToChar(10)});
                 com5.Open();
-                var b = Convert.ToByte("11000000", 2);
+                var b = Convert.ToByte("11110000", 2);
                 com5.Write(new[] {b},0,1);
                 Console.WriteLine("\r\nDone!\r\n");
             }
